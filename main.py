@@ -1,7 +1,18 @@
+from graphics.base.Point import Point
+
 class Main:
     def run(self):
         print("Hello World")
 
-if __name__ == "hugo":
+        p1 = Point(1, 2)
+        print(p1)
+
+        p1.move(10, 20)
+        print(p1)
+
+        p2 = Point(5, 6)
+        print(p2)
+
+if __name__ == "__main__":
     main = Main()
     main.run()

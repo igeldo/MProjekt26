@@ -16,6 +16,7 @@ in einer Git Bash unter Windows.
 - Python 3 ist installiert (https://www.python.org/downloads/)
 - Git-Client ist installiert (https://git-scm.com/downloads)
 - GitHub-Account ist angelegt und SSH-Key ist bei GitHub hinterlegt (https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+- optional: Claude Code ist installiert (https://www.claude.com/product/claude-code)
 
 ### Clonen des Repositories
 

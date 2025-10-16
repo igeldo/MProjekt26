@@ -8,7 +8,7 @@ class Point:
         self._x += deltaX
         self._y += deltaY
 
-    def move(self, Vector v):
+    def move(self, v: Vector):
 
     def __str__(self):
         return "Point({}, {})".format(self._x, self._y)

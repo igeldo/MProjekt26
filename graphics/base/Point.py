@@ -1,12 +1,20 @@
-class Point:
+from __future__ import annotations
 
-    def __init__(self, x, y):
-        self._x = x
-        self._y = y
+from graphics.base import Vector
+from graphics.base.Coordinate2D import Coordinate2D
 
-    def move(self, deltaX, deltaY):
-        self._x += deltaX
-        self._y += deltaY
+class Point(Coordinate2D):
 
-    def __str__(self):
+    def __init__(self, x, y) -> None:
+        super().__init__(x, y)
+
+    def __add__(self, v: Vector) -> Point:
+        return Point(self._x + v.get_x(), self._y + v.get_y())
+
+    def __sub__(self, v: Vector) -> Point:
+        x = self._x - v.get_x()
+        y = self._y - v.get_y()
+        return Point(x, y)
+
+    def __str__(self) -> str:
         return "Point({}, {})".format(self._x, self._y)

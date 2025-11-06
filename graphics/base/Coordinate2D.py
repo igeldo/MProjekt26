@@ -1,15 +1,17 @@
 from abc import ABC, abstractmethod
 
+from graphics.base.util import check_float
+
+
 class Coordinate2D(ABC):
+    def __init__(self, x: float, y: float) -> None:
+        self._x = check_float(x, 'x')
+        self._y = check_float(y, 'y')
 
-    def __init__(self, x, y):
-        self._x = x
-        self._y = y
-
-    def get_x(self):
+    def get_x(self) -> float:
         return self._x
 
-    def get_y(self):
+    def get_y(self) -> float:
         return self._y
 
     @abstractmethod

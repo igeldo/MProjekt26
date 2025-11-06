@@ -1,18 +1,17 @@
 from __future__ import annotations
 
-from graphics.base.Coordinate2D import Coordinate2D
+from graphics.base.coordinate2d import Coordinate2D
+from graphics.base.util import check_type
 
 
 class Vector(Coordinate2D):
 
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float) -> None:
         super().__init__(x, y)
 
-    def __add__(self, v: Vector) -> Vector:
-        return Vector(self._x + v.get_x(), self._y + v.get_y())
-
-    def __mul__(self, s: float) -> Vector:
-        return Vector(self._x * s, self._y * s)
-
     def __str__(self) -> str:
-        return "Vector({}, {})".format(self._x, self._y)
+        return f"Vector({self._x},{self._y})"
+
+    def __add__(self, other) -> Vector:
+        check_type(other, Vector, 'other')
+        return Vector(self.get_x() + other.get_x(), self.get_y() + other.get_y())

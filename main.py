@@ -1,14 +1,11 @@
-"""
-main.py - Einstiegspunkt der Anwendung
-
-Startet den Aktivitäten-Planer
-"""
-
-from app.controllers.AppController import AppController
+from app.controller.AppController import AppController
 
 
 def main():
-    """Hauptfunktion - startet die Anwendung"""
+    """
+    Hauptfunktion - startet die Anwendung.
+    Initialisiert den Controller und beginnt die Hauptschleife.
+    """
     try:
         # Controller erstellen und starten
         app = AppController()

@@ -21,7 +21,15 @@ class TripData:
         return bool(city and city.strip())
     
     def is_end_command(self, city: str) -> bool:
-        """Prüft ob Beenden-Kommando"""
+        """
+        Prüft, ob die Eingabe das Beenden-Kommando ist.
+
+        Args:
+            city (str): Die eingegebene Stadt.
+
+        Returns:
+            bool: True, wenn 'ende' (case-insensitive) eingegeben wurde.
+        """
         return city.lower() == 'ende'
     
     def set_city(self, city: str):
@@ -30,8 +38,13 @@ class TripData:
     
     def set_vibe_from_choice(self, choice: str) -> bool:
         """
-        Konvertiert User-Wahl zu Vibe
-        Returns: True wenn gültig, False sonst
+        Konvertiert die Benutzereingabe in einen konkreten Vibe.
+
+        Args:
+            choice (str): Die Eingabe des Benutzers (z.B. "1", "2").
+
+        Returns:
+            bool: True, wenn eine gültige Wahl getroffen wurde, sonst False.
         """
         vibe_map = {
             "1": "Action & Abenteuer",

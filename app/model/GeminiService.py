@@ -1,8 +1,3 @@
-"""
-Model - AI Service (Datenquelle)
-Dies ist Teil des Models, da es externe Daten bereitstellt
-"""
-
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
@@ -28,14 +23,14 @@ class GeminiService:
 
     def fetch_suggestions(self, city: str, vibe: str) -> str:
         """
-        Holt Reiseempfehlungen von der AI
-        
+        Holt Reisevorschläge von der Google Gemini API.
+
         Args:
-            city: Name der Stadt
-            vibe: Gewünschte Atmosphäre
-            
+            city (str): Die Zielstadt.
+            vibe (str): Der gewünschte Vibe ("Action & Abenteuer" oder "Ruhe & Entspannung").
+
         Returns:
-            String mit Empfehlungen oder Fehlermeldung
+            str: Die generierten Tipps als Textliste oder eine Fehlermeldung.
         """
         prompt = (
             f"Erstelle 3 kurze Reisetipps für {city} mit dem Fokus auf "

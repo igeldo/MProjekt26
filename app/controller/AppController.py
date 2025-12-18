@@ -1,17 +1,12 @@
-"""
-Controller - Hauptsteuerung der Anwendung
-Koordiniert zwischen Model und View
-View holt Daten direkt aus dem Model
-"""
-
-from app.models.TripData import TripData
-from app.models.GeminiService import GeminiService
-from app.views.ConsoleView import ConsoleView
+from app.model.TripData import TripData
+from app.model.GeminiService import GeminiService
+from app.view.ConsoleView import ConsoleView
 
 
 class AppController:
     """
-    Hauptcontroller - koordiniert den Ablauf zwischen Model und View
+    Controller-Klasse für die Anwendungslogik.
+    Verbindet Model und View und steuert den Hauptablauf.
     """
 
     def __init__(self):
@@ -46,11 +41,12 @@ class AppController:
 
     def handle_city_input(self) -> bool:
         """
-        Behandelt Stadt-Eingabe
+        Verarbeitet die Eingabe der Stadt.
+        Prüft auf Beenden-Kommando und Validität.
 
         Returns:
-            True wenn fortgesetzt werden soll
-            False wenn beendet werden soll
+            bool: True, wenn der Programmfluss fortgesetzt werden soll.
+                  False, wenn das Programm beendet werden soll.
         """
         while True:
             city = self.view.get_city_input()
@@ -72,11 +68,11 @@ class AppController:
 
     def handle_vibe_input(self) -> bool:
         """
-        Behandelt Vibe-Auswahl
+        Verarbeitet die Auswahl des Vibes.
 
         Returns:
-            True wenn gültige Auswahl
-            False wenn ungültig (Loop zurück)
+            bool: True, wenn eine gültige Auswahl getroffen wurde.
+                  False, wenn die Auswahl ungültig war (wiederholen).
         """
         while True:
             choice = self.view.get_vibe_input()

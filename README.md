@@ -13,7 +13,26 @@ Ein einfaches Konsolen-Programm, das mithilfe von Google Gemini AI personalisier
 
 Das Projekt folgt dem Model-View-Controller (MVC) Muster:
 
-![MVC Architektur](https://mermaid.ink/img/Z3JhcGggVEQNCiAgICBVc2VyKChCZW51dHplcikpDQogICAgDQogICAgc3ViZ3JhcGggVmlldw0KICAgICAgQ1ZbQ29uc29sZVZpZXddDQogICAgZW5kDQogICAgDQogICAgc3ViZ3JhcGggQ29udHJvbGxlcg0KICAgICAgQUNbQXBwQ29udHJvbGxlcl0NCiAgICBlbmQNCiAgICANCiAgICBzdWJncmFwaCBNb2RlbA0KICAgICAgVERbVHJpcERhdGFdDQogICAgICBHU1tHZW1pbmlTZXJ2aWNlXQ0KICAgIGVuZA0KDQogICAgVXNlciAtLT58TGllc3QgJiBUaXBwdHwgQ1YNCiAgICBDViAtLT58R2lidCBFaW5nYWJlIHdlaXRlcnwgQUMNCiAgICBBQyAtLT58U2V0enQgWnVzdGFuZHwgVEQNCiAgICBBQyAtLT58UnVmdCBhYnwgR1MNCiAgICBHUyAtLT58TGllZmVydCBUaXBwc3wgQUMNCiAgICBBQyAtLi0+fEFrdHVhbGlzaWVydHwgQ1YNCiAgICBDViAtLi0+fExpZXN0IERhdGVufCBURA0K)
+![MVC Architektur](https://mermaid.ink/img/Z3JhcGggVEQNCiAgICBNYWluKFtNYWluXSkNCiAgICBVc2VyKChCZW51dHplcikpDQogICAgDQogICAgc3ViZ3JhcGggVmlldw0KICAgICAgQ1ZbQ29uc29sZVZpZXddDQogICAgZW5kDQogICAgDQogICAgc3ViZ3JhcGggQ29udHJvbGxlcg0KICAgICAgQUNbQXBwQ29udHJvbGxlcl0NCiAgICBlbmQNCiAgICANCiAgICBzdWJncmFwaCBNb2RlbA0KICAgICAgVERbVHJpcERhdGFdDQogICAgICBHU1tHZW1pbmlTZXJ2aWNlXQ0KICAgIGVuZA0KDQogICAgTWFpbiAtLT58U3RhcnRldHwgQUMNCiAgICBBQyAtLT58UnVmdCBhdWZ8IENWDQogICAgQ1YgPC0tPnxJbnRlcmFrdGlvbnwgVXNlcg0KICAgIENWIC0tPnxHaWJ0IEVpbmdhYmVuIHp1csO8Y2t8IEFDDQogICAgQUMgLS0+fFNwZWljaGVydCBadXN0YW5kfCBURA0KICAgIEFDIC0tPnxGcmFndCBUaXBwcyBhYnwgR1MNCiAgICBHUyAtLT58TGllZmVydCBUaXBwc3wgQUMNCiAgICBBQyAtLT58WmVpZ3QgRXJnZWJuaXNzZXwgQ1YNCg==)
+
+## Programmablauf
+
+Der Ablauf der Anwendung gliedert sich in folgende Schritte:
+
+**<u>1. Initialisierung</u>**
+Das Programm startet über die `main.py`. Der **AppController** wird erstellt, welcher wiederum das **Daten-Model** (für Stadt, Personen, Vibe) und die **ConsoleView** (für die Anzeige) initialisiert.
+
+**<u>2. Benutzereingaben</u>**
+Der Controller steuert die Abfrage der Informationen über den View:
+1. **Ort**: Wohin soll die Reise gehen?
+2. **Gruppengröße**: Wie viele Personen sind dabei?
+3. **Vibe**: Soll es eher actionreich oder entspannt sein?
+
+**<u>3. Verarbeitung & AI-Anfrage</u>**
+Sobald alle Daten vorliegen, sendet der Controller eine Anfrage an den **GeminiService**. Dieser generiert über die Google AI passende Reisetipps, die spezifisch auf den Ort, die Gruppengröße und die gewählte Stimmung zugeschnitten sind.
+
+**<u>4. Ausgabe</u>**
+Die empfangenen Tipps werden im Model gespeichert und anschließend über den View übersichtlich in der Konsole ausgegeben. Danach beginnt der Prozess von vorne, bis der Nutzer "Ende" eingibt.
 
 ## Voraussetzungen
 

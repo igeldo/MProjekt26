@@ -18,23 +18,20 @@ class GeminiService:
                 raise ValueError("API Key fehlt in .env!")
 
             genai.configure(api_key=api_key)
-            cls._model = genai.GenerativeModel('gemini-2.5-flash')
+            cls._model = genai.GenerativeModel('gemini-2.5-flash-lite')
         return cls._instance
 
-    def fetch_suggestions(self, city: str, vibe: str) -> str:
+    def fetch_suggestions(self, city: str, group_size: int, vibe: str) -> str:
         """
         Holt Reisevorschläge von der Google Gemini API.
-
-        Args:
-            city (str): Die Zielstadt.
-            vibe (str): Der gewünschte Vibe ("Action & Abenteuer" oder "Ruhe & Entspannung").
-
-        Returns:
-            str: Die generierten Tipps als Textliste oder eine Fehlermeldung.
-        """
+    """
         prompt = (
-            f"Erstelle 3 kurze Reisetipps für {city} mit dem Fokus auf "
-            f"'{vibe}'. Format: Nur eine Liste."
+            f"Du bist ein Reiseexperte. Erstelle 3 konkrete Reisetipps für {city}, "
+            f"die exakt auf eine Gruppe von {group_size} Personen zugeschnitten sind. "
+            f"Vibe: '{vibe}'. "
+            f"WICHTIG: Erkläre bei jedem Tipp kurz in Klammern, warum er gerade für {group_size} Personen ideal ist "
+            f"(z.B. 'romantisch zu zweit' oder 'lustig als große Truppe'). "
+            f"Vermeide generische Vorschläge, die immer passen."
         )
         try:
             response = self._model.generate_content(prompt)

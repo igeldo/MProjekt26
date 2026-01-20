@@ -7,12 +7,14 @@ class TripData:
     
     def __init__(self):
         self.city: str = ""
+        self.group_size: int = 1
         self.vibe: str = ""
         self.recommendations: str = ""
 
     def clear(self):
         """Setzt alle Daten zurück"""
         self.city = ""
+        self.group_size = 1
         self.vibe = ""
         self.recommendations = ""
     
@@ -21,30 +23,28 @@ class TripData:
         return bool(city and city.strip())
     
     def is_end_command(self, city: str) -> bool:
-        """
-        Prüft, ob die Eingabe das Beenden-Kommando ist.
-
-        Args:
-            city (str): Die eingegebene Stadt.
-
-        Returns:
-            bool: True, wenn 'ende' (case-insensitive) eingegeben wurde.
-        """
+        """Prüft ob Beenden-Kommando"""
         return city.lower() == 'ende'
     
     def set_city(self, city: str):
         """Setzt die Stadt"""
         self.city = city.strip()
+
+    def set_group_size(self, size_input: str) -> bool:
+       
+        try:
+            val = int(size_input)
+            if val > 0:
+                self.group_size = val
+                return True
+            return False
+        except ValueError:
+            return False
     
     def set_vibe_from_choice(self, choice: str) -> bool:
         """
-        Konvertiert die Benutzereingabe in einen konkreten Vibe.
-
-        Args:
-            choice (str): Die Eingabe des Benutzers (z.B. "1", "2").
-
-        Returns:
-            bool: True, wenn eine gültige Wahl getroffen wurde, sonst False.
+        Konvertiert User-Wahl zu Vibe
+        Returns: True wenn gültig, False sonst
         """
         vibe_map = {
             "1": "Action & Abenteuer",

@@ -8,12 +8,6 @@ class ConsoleView:
     """View für Konsolen-basierte Interaktion"""
 
     def __init__(self, model):
-        """
-        Initialisiert die View mit einer Referenz zum Model.
-
-        Args:
-            model (TripData): Die Instanz des Datenmodels.
-        """
         self.model = model
 
     def show_welcome(self):
@@ -22,23 +16,19 @@ class ConsoleView:
         print("Lass uns deinen perfekten Tag planen.")
 
     def get_city_input(self) -> str:
-        """
-        Fragt den Benutzer nach der gewünschten Stadt.
-
-        Returns:
-            str: Die eingegebene Stadt (bereinigt von Leerzeichen).
-        """
+        """Holt Stadt-Eingabe vom Benutzer"""
         return input(
             "\nBitte gib deinen Ausflugsort ein (oder 'Ende' für Ende): "
         ).strip()
 
-    def get_vibe_input(self) -> str:
+    def get_group_size_input(self) -> str:
         """
-        Zeigt die Vibe-Optionen und fragt die Auswahl ab.
+        Fragt den Benutzer nach der Gruppengröße.
+        """
+        return input("Wie viele Personen seid ihr? ").strip()
 
-        Returns:
-            str: Die gewählte Option als String (z.B. "1").
-        """
+    def get_vibe_input(self) -> str:
+        """Holt Stimmungs-Auswahl vom Benutzer"""
         print("\nWorauf hast du Lust?")
         print("1: Action")
         print("2: Entspannung")

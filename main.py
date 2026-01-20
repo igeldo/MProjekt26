@@ -2,10 +2,7 @@ from app.controller.AppController import AppController
 
 
 def main():
-    """
-    Hauptfunktion - startet die Anwendung.
-    Initialisiert den Controller und beginnt die Hauptschleife.
-    """
+    """Hauptfunktion - startet die Anwendung"""
     try:
         # Controller erstellen und starten
         app = AppController()

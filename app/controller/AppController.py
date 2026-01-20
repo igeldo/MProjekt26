@@ -4,10 +4,6 @@ from app.view.ConsoleView import ConsoleView
 
 
 class AppController:
-    """
-    Controller-Klasse für die Anwendungslogik.
-    Verbindet Model und View und steuert den Hauptablauf.
-    """
 
     def __init__(self):
         # Model initialisieren
@@ -29,6 +25,9 @@ class AppController:
             if not self.handle_city_input():
                 break  # Beenden gewünscht
 
+            # Gruppengröße
+            self.handle_group_size_input()
+
             # Vibe-Auswahl
             if not self.handle_vibe_input():
                 continue  # Zurück zum Start
@@ -41,12 +40,11 @@ class AppController:
 
     def handle_city_input(self) -> bool:
         """
-        Verarbeitet die Eingabe der Stadt.
-        Prüft auf Beenden-Kommando und Validität.
+        Behandelt Stadt-Eingabe
 
         Returns:
-            bool: True, wenn der Programmfluss fortgesetzt werden soll.
-                  False, wenn das Programm beendet werden soll.
+            True wenn fortgesetzt werden soll
+            False wenn beendet werden soll
         """
         while True:
             city = self.view.get_city_input()
@@ -66,13 +64,21 @@ class AppController:
             self.data.set_city(city)
             return True
 
+    def handle_group_size_input(self):
+       
+        while True:
+            size_input = self.view.get_group_size_input()
+            if self.data.set_group_size(size_input):
+                break
+            self.view.show_error("Bitte eine gültige Zahl > 0 eingeben.")
+
     def handle_vibe_input(self) -> bool:
         """
-        Verarbeitet die Auswahl des Vibes.
+        Behandelt Vibe-Auswahl
 
         Returns:
-            bool: True, wenn eine gültige Auswahl getroffen wurde.
-                  False, wenn die Auswahl ungültig war (wiederholen).
+            True wenn gültige Auswahl
+            False wenn ungültig (Loop zurück)
         """
         while True:
             choice = self.view.get_vibe_input()
@@ -90,6 +96,7 @@ class AppController:
         # AI-Service über Model nutzen
         recommendations = self.ai_service.fetch_suggestions(
             self.data.city,
+            self.data.group_size,
             self.data.vibe
         )
 
